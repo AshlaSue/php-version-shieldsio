@@ -1,7 +1,103 @@
 {
-  "php86": "8.6.0",
-  "php85": "8.5.13",
-  "php84": "8.4.28",
-  "php83": "8.3.37",
-  "php82": "8.2.36"
+  "php86": {
+    "latest": "8.6.0",
+    "state": "stable"
+  },
+  "php85": {
+    "latest": "8.5.13",
+    "state": "stable"
+  },
+  "php84": {
+    "latest": "8.4.28",
+    "state": "stable"
+  },
+  "php83": {
+    "latest": "8.3.37",
+    "state": "security"
+  },
+  "php82": {
+    "latest": "8.2.36",
+    "state": "security"
+  },
+  "php81": {
+    "latest": "8.1.34",
+    "state": "eol"
+  },
+  "php80": {
+    "latest": "8.0.30",
+    "state": "eol"
+  },
+  "php74": {
+    "latest": "7.4.33",
+    "state": "eol"
+  },
+  "php73": {
+    "latest": "7.3.33",
+    "state": "eol"
+  },
+  "php72": {
+    "latest": "7.2.34",
+    "state": "eol"
+  },
+  "php71": {
+    "latest": "7.1.33",
+    "state": "eol"
+  },
+  "php70": {
+    "latest": "7.0.33",
+    "state": "eol"
+  },
+  "php56": {
+    "latest": "5.6.40",
+    "state": "eol"
+  },
+  "php55": {
+    "latest": "5.5.38",
+    "state": "eol"
+  },
+  "php54": {
+    "latest": "5.4.45",
+    "state": "eol"
+  },
+  "php53": {
+    "latest": "5.3.29",
+    "state": "eol"
+  },
+  "php52": {
+    "latest": "5.2.17",
+    "state": "eol"
+  },
+  "php51": {
+    "latest": "5.1.6",
+    "state": "eol"
+  },
+  "php50": {
+    "latest": "5.0.5",
+    "state": "eol"
+  },
+  "php44": {
+    "latest": "4.4.9",
+    "state": "eol"
+  },
+  "php43": {
+    "latest": "4.3.11",
+    "state": "eol"
+  },
+  "php42": {
+    "latest": "4.2.3",
+    "state": "eol"
+  },
+  "php41": {
+    "latest": "4.1.2",
+    "state": "eol"
+  },
+  "php40": {
+    "latest": "4.0.6",
+    "state": "eol"
+  },
+  "php30": {
+    "latest": "3.0.x (latest)",
+    "state": null
+  },
+  "file_last_updated": "2026-11-20T12:56:07Z"
 }
