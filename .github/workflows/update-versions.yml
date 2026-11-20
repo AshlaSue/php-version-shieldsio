@@ -29,7 +29,27 @@ jobs:
                   }
                 })
                 | from_entries
-              ' > latest.json
+              ' > versions.json
+
+      - name: Update latest.json
+        run: |
+          # Extract existing version data without the timestamp
+          if [ -f latest.json ]; then
+            jq 'del(.file_last_updated)' latest.json > old-versions.json
+          else
+            echo '{}' > old-versions.json
+          fi
+
+          # Only update if PHP version data has changed
+          if ! diff -q old-versions.json versions.json > /dev/null; then
+            jq --arg timestamp "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+              '. + {file_last_updated: $timestamp}' \
+              versions.json > latest.json
+
+            echo "PHP versions updated."
+          else
+            echo "No PHP version changes detected."
+          fi
 
       - name: Commit changes
         run: |
@@ -40,5 +60,5 @@ jobs:
             git commit -m "Update PHP versions"
             git push
           else
-            echo "No version changes"
+            echo "No changes to commit."
           fi
