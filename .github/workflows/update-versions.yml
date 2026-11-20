@@ -21,11 +21,13 @@ jobs:
         run: |
           curl -fsSL https://www.php.net/releases/branches.php \
             | jq '
-                map(select(.state == "stable" or .state == "security"))
-                | map({
-                    key: ("php" + (.branch | gsub("\\."; ""))),
-                    value: .latest
-                  })
+                map({
+                  key: ("php" + (.branch | gsub("\\."; ""))),
+                  value: {
+                    latest: .latest,
+                    state: .state
+                  }
+                })
                 | from_entries
               ' > latest.json
 
