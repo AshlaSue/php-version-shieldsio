@@ -1,0 +1,42 @@
+
+name: Update PHP versions
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch PHP versions
+        run: |
+          curl -fsSL https://www.php.net/releases/branches.php \
+            | jq '
+                map(select(.state == "stable" or .state == "security"))
+                | map({
+                    key: ("php" + (.branch | gsub("\\."; ""))),
+                    value: .latest
+                  })
+                | from_entries
+              ' > latest.json
+
+      - name: Commit changes
+        run: |
+          if ! git diff --quiet latest.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add latest.json
+            git commit -m "Update PHP versions"
+            git push
+          else
+            echo "No version changes"
+          fi
