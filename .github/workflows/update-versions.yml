@@ -3,7 +3,10 @@ name: Update PHP versions
 
 on:
   schedule:
-    - cron: '17 */6 * * *'
+    # cron format is: min, hr, day of the month, month, day of the week. Astrisk means every instance of that.
+    # EG: IF * on the day of the week, it would run daily
+    # cron: '17 */6 * * *' <-- this means it runs at 17mins past the hr every 6 hrs
+    - cron: '17 6 * * *' # Runs at 06:17 daily
   workflow_dispatch:
 
 permissions:
